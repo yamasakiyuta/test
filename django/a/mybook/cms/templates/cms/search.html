@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>search</title>
+<head>
+
+<body>
+<p>{{error_msg}}</p>
+<form action="/search/" method="POST">
+{% csrf_token %}
+{{form.word}}
+<input type="submit" value="search">
+</form>
+<br>
+<table>
+<tr>
+<th>title</th>
+<th>date</th>
+</tr>
+{% for article in articles %}
+<tr>
+<td>{{article.title}}</td>
+<td>{{article.date}}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

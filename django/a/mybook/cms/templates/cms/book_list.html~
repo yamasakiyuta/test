@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}関数名一覧{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">関数名一覧</h3>
+    <h2>検索</h2>
+    <form action="" method="GET">
+        <label>関数名:<input type="text" size="20" name="your_name"></label>
+        {{ form.q }}
+        <input type="submit" value="検索">
+    </form>
+    <a href="{% url 'cms:book_add' %}" class="btn btn-default btn-sm">追加</a>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th><Div Align="center">ID</Div></th>
+          <th><Div Align="center">関数名</Div></th>
+          <th><Div Align="center">プログラム名</Div></th>
+          <th><Div Align="center">タグ名</Div></th>
+          <th><Div Align="center">作成者</Div></th>
+            <th><Div Align="center">Github</Div></th>
+          <th><Div Align="center">test</Div></th>
+          <th><Div Align="center">操作</Div></th>      </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td><Div Align="center">{{ book.id }}</Div></td>
+          <td><Div Align="center">{{ book.func_name }}</Div></td>
+          <td><Div Align="center">{{ book.program_name }}</Div></td>
+          <td><Div Align="center">{{ book.tag }}</Div></td>
+          <td><Div Align="center">{{ book.author }}</Div></td>
+            <td><Div Align="center"><a href="{{ book.Github }}" class="btn btn-success btn-sm">Github</a></Div></td>
+          <td><Div Align="center">{{ book.test }}</Div></td>
+          <td><Div Align="center">
+              <a href="{% url 'cms:book_mod' book_id=book.id %}" class="btn btn-warning btn-sm">修正</a>
+              <a href="{% url 'cms:book_del' book_id=book.id %}" class="btn btn-danger btn-sm">削除</a>
+              <a href="{% url 'cms:impression_list' book_id=book.id %}" class="btn btn-info btn-sm ">プログラムソース</a>
+          </Div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}関数辞典{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header"><Div Align="center"><font size="7" color="#00ff00">関数辞典</font></Div></h3>
+    <a href="{% url 'cms:book_list' %}" class="btn btn-primary btn-lg active"><font size="7">Python</font></a>
+    <a href="{% url 'cms:book_list' %}" class="btn btn-default btn-lg active">C++</a>
+{% endblock content %}
